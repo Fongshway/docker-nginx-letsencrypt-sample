@@ -43,10 +43,10 @@ services:
     build: ./samples/api
     container_name: sample-api
     environment:
-      - VIRTUAL_HOST=sampleapi.example.com
+      - VIRTUAL_HOST=sampleapi.fongshway.com
       - VIRTUAL_NETWORK=nginx-proxy
       - VIRTUAL_PORT=3000
-      - LETSENCRYPT_HOST=sampleapi.example.com
+      - LETSENCRYPT_HOST=sampleapi.fongshway.com
       - LETSENCRYPT_EMAIL=email@example.com
 
   sample-website:
@@ -58,8 +58,8 @@ services:
       - "./volumes/nginx-sample-website/conf.d/:/etc/nginx/conf.d"
       - "./volumes/config/sample-website/config.js:/usr/share/nginx/html/config.js"
     environment:
-      - VIRTUAL_HOST=samplewebsite.example.com
+      - VIRTUAL_HOST=sample.fongshway.com
       - VIRTUAL_NETWORK=nginx-proxy
       - VIRTUAL_PORT=80
-      - LETSENCRYPT_HOST=sample.example.com
+      - LETSENCRYPT_HOST=sample.fongshway.com
       - LETSENCRYPT_EMAIL=email@example.com
