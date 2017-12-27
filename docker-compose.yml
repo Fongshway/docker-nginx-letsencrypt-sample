@@ -13,6 +13,7 @@ services:
       - "/etc/nginx/vhost.d"
       - "/usr/share/nginx/html"
       - "./volumes/proxy/certs:/etc/nginx/certs:ro"
+    command: [nginx-debug, '-g', 'daemon off;']
 
   nginx-gen:
     restart: always
