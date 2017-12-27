@@ -67,9 +67,11 @@ services:
       - LETSENCRYPT_EMAIL=email@example.com
 
   jenkins:
+    restart: always
     image: jenkins/jenkins:lts
+    container_name: jenkins
     volumes:
-      - './jenkins_home:/var/jenkins_home'
+      - "./jenkins_home:/var/jenkins_home"
     environment:
       - VIRTUAL_HOST=jenkins.fongshway.com
       - VIRTUAL_NETWORK=nginx-proxy
