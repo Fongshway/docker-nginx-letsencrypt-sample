@@ -15,6 +15,11 @@ instance.setSecurityRealm(hudsonRealm)
 
 def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
 instance.setAuthorizationStrategy(strategy)
+
+// https://wiki.jenkins.io/display/JENKINS/CSRF+Protection
+def issuer = new DefaultCrumbIssuer(true)
+instance.setCrumbIssuer(issuer)
+
 instance.save()
 
 Jenkins.instance.getInjector().getInstance(AdminWhitelistRule.class).setMasterKillSwitch(false)
