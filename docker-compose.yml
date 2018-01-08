@@ -68,10 +68,14 @@ services:
 
   jenkins:
     restart: always
-    image: jenkins/jenkins:lts
+    image: fongshway/jenkins
+    build: ./jenkins
     container_name: jenkins
     volumes:
       - "jenkins_home:/var/jenkins_home"
+    secrets:
+      - jenkins-user
+      - jenkins-pass
     environment:
       - VIRTUAL_HOST=jenkins.fongshway.com
       - VIRTUAL_NETWORK=nginx-proxy
@@ -81,3 +85,9 @@ services:
 
 volumes:
   jenkins_home:
+
+secrets:
+  jenkins-user:
+    external: true
+  jenkins-pass:
+    external: true
