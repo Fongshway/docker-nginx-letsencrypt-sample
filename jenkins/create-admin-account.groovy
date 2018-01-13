@@ -1,10 +1,11 @@
 #!groovy
 
-import jenkins.model.*
-import hudson.security.*
+import hudson.security.FullControlOnceLoggedInAuthorizationStrategy
+import hudson.security.HudsonPrivateSecurityRealm
+import jenkins.model.Jenkins
 import jenkins.security.s2m.AdminWhitelistRule
 
-def instance = Jenkins.getInstance()
+Jenkins instance = Jenkins.getInstance()
 
 def user = new File("/run/secrets/jenkins-user").text.trim()
 def pass = new File("/run/secrets/jenkins-pass").text.trim()
@@ -14,11 +15,8 @@ hudsonRealm.createAccount(user, pass)
 instance.setSecurityRealm(hudsonRealm)
 
 def strategy = new FullControlOnceLoggedInAuthorizationStrategy()
+strategy.setAllowAnonymousRead(false)
 instance.setAuthorizationStrategy(strategy)
-
-// https://wiki.jenkins.io/display/JENKINS/CSRF+Protection
-def issuer = new DefaultCrumbIssuer(true)
-instance.setCrumbIssuer(issuer)
 
 instance.save()
 
