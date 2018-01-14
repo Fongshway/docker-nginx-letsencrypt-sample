@@ -54,9 +54,6 @@ services:
     container_name: jenkins
     volumes:
       - jenkins_home:/var/jenkins_home
-    secrets:
-      - jenkins-user
-      - jenkins-pass
     environment:
       - VIRTUAL_HOST=jenkins.fongshway.com
       - VIRTUAL_NETWORK=nginx-proxy
@@ -98,9 +95,3 @@ volumes:
   nginx_conf:
   nginx_html:
   nginx_vhost:
-
-secrets:
-  jenkins-user:
-    external: true
-  jenkins-pass:
-    external: true
