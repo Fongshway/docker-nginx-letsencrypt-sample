@@ -54,6 +54,7 @@ services:
     container_name: jenkins
     volumes:
       - jenkins_home:/var/jenkins_home
+      - ./volumes/secrets:/run/secrets
     environment:
       - VIRTUAL_HOST=jenkins.fongshway.com
       - VIRTUAL_NETWORK=nginx-proxy
