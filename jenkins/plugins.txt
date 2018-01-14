@@ -57,6 +57,7 @@ ssh-slaves
 structs
 timestamper
 token-macro
+windows-slaves
 workflow-aggregator
 workflow-api
 workflow-basic-steps
