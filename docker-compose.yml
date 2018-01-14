@@ -60,8 +60,6 @@ services:
       - VIRTUAL_PORT=8080
       - LETSENCRYPT_HOST=jenkins.fongshway.com
       - LETSENCRYPT_EMAIL=email@example.com
-      - JENKINS_USER_FILE=/run/secrets/jenkins-user # Make sure to put the username in /run/secrets/jenkins-user
-      - JENKINS_PASS_FILE=/run/secrets/jenkins-pass # Make sure to put the password in /run/secrets/jenkins-pass
 
   sample-api:
     restart: always
