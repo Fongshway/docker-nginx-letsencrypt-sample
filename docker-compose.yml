@@ -49,7 +49,7 @@ services:
 
   sample-api:
     restart: always
-    image: sample-api
+    image: fongshway/sample-api
     build: ./samples/api
     container_name: sample-api
     environment:
@@ -61,7 +61,7 @@ services:
 
   sample-website:
     restart: always
-    image: sample-website
+    image: fongshway/sample-website
     build: ./samples/website
     container_name: sample-website
     volumes:
