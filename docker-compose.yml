@@ -65,6 +65,7 @@ services:
   portainer:
     restart: always
     image: portainer/portainer
+    container_name: portainer
     volumes:
       - portainer_data:/data
       - /var/run/docker.sock:/var/run/docker.sock:rw
