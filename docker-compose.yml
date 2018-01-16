@@ -62,6 +62,21 @@ services:
       - LETSENCRYPT_HOST=jenkins.fongshway.com
       - LETSENCRYPT_EMAIL=email@example.com
 
+  portainer:
+    restart: always
+    image: portainer/portainer
+    volumes:
+      - portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock:rw
+    depends_on:
+      - letsencrypt-nginx-proxy-companion
+    environment:
+      - VIRTUAL_HOST=portainer.fongshway.com
+      - VIRTUAL_NETWORK=nginx-proxy
+      - VIRTUAL_PORT=9000
+      - LETSENCRYPT_HOST=portainer.fongshway.com
+      - LETSENCRYPT_EMAIL=email@example.com
+
   sample-api:
     restart: always
     image: fongshway/sample-api
@@ -94,3 +109,5 @@ volumes:
   nginx_conf:
   nginx_html:
   nginx_vhost:
+  portainer_data:
+    external: true
