@@ -1,5 +1,12 @@
 FROM jenkins/jenkins:lts-alpine
 
+USER root
+RUN apk update && apk upgrade && \
+    apk add \
+      docker \
+      vim
+
+USER jenkins
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
 
 COPY create-admin-account.groovy /usr/share/jenkins/ref/init.groovy.d/create-admin-account.groovy
